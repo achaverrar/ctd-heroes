@@ -1,0 +1,296 @@
+/*
+
+TABLE OF CONTENTS
+  1. Font Imports
+  2. Global Variables
+  3. Reset
+  4. Layout
+  5. Discount
+  6. Header
+  7. Cards
+  8. Like
+  9. Footer
+  10. Animations
+
+*/
+
+/* ############ 1. Font Imports ########### */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* ############ 2. Global Variables ########### */
+:root {
+  /* Colors */
+  --color-primary: #00669f;
+  --color-primary-dark: #00446b;
+  --color-secondary: #1cd1b0;
+  --color-tertiary: #cc2424;
+  --color-tertiary-light: hsl(0, 70%, 90%);
+  --color-grey: #f3f3f3;
+  --color-highlight-1: #ffffff;
+  --color-highlight-2: #000000;
+  /* Fonts */
+  --font-family-default: "Roboto", sans-serif;
+  --font-size-default: 1.6rem;
+  --font-weight-default: 400;
+  /* Box shadows */
+  --box-shadow-header: 0px 10px 7px 0px rgba(0, 0, 0, 0.25);
+  --box-shadow-cards: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --box-shadow-photos: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  /* Lengths */
+  --side-length-avatar: 12rem;
+}
+
+/* ############ 3. Reset ########### */
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: var(--color-highlight-1);
+  color: var(--color-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: var(--font-family-default);
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+  font-size: var(--font-size-default);
+  color: var(--color-highlight-2);
+  font-weight: var(--font-weight-default);
+}
+
+h1,
+h2 {
+  font-weight: inherit;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+button,
+a {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* ############ 4. Layout ########### */
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.container {
+  max-width: 102.4rem;
+  margin: auto;
+}
+
+.main {
+  flex: 1;
+}
+
+/* ############ 5. Discount ########### */
+.discount {
+  background-color: var(--color-secondary);
+  padding: 1rem 2.7rem;
+}
+
+.discount__text {
+  font-size: 1.5rem;
+}
+
+/* ############ 6. Header ########### */
+.header {
+  padding: 2.8rem;
+  background-color: var(--color-primary);
+  box-shadow: var(--box-shadow-header);
+  position: sticky;
+  z-index: 100;
+  top: 0;
+}
+
+.header__text {
+  font-size: 4rem;
+}
+
+/* ############ 7. Cards ########### */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3.2rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  border-radius: 16px 16px 0 0;
+  box-shadow: var(--box-shadow-cards);
+  overflow: hidden;
+  position: relative;
+}
+
+.like {
+  position: absolute;
+  top: 1.4rem;
+  left: 2.1rem;
+  color: var(--color-grey);
+}
+
+.card__head-background {
+  height: 19.3rem;
+  background-size: cover;
+}
+
+.card--batman .card__head-background {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("../imgs/batman-background.jpg");
+}
+
+.card--harley .card__head-background {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.1) 45%
+    ),
+    url("../imgs/harley-quinn-background.jpg");
+}
+
+.card__avatar-container {
+  height: calc(var(--side-length-avatar) / 2);
+  width: var(--side-length-avatar);
+  position: relative;
+  margin: auto;
+  overflow: visible;
+}
+
+.card__avatar {
+  height: 200%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--box-shadow-photos);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.7rem 1.8rem 1.6rem;
+}
+
+.card__title {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.card__description {
+  margin-top: 1rem;
+}
+
+.card__button {
+  margin-top: 3.7rem;
+}
+
+.button {
+  font-size: 1.5rem;
+  border: none;
+  padding: 1em 2.5em;
+  background-color: var(--color-primary);
+  color: var(--color-highlight-1);
+}
+
+.button:hover,
+.button:active {
+  background-color: var(--color-primary-dark);
+}
+
+/* ############ 8. Like ########### */
+.like__checkbox {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  top: -100px;
+  left: -100px;
+  opacity: 0;
+}
+
+.like__icon-container {
+  cursor: pointer;
+}
+
+.like__checkbox:checked + .like__icon-container #like__icon {
+  fill: var(--color-tertiary);
+}
+
+.like__checkbox:checked + .like__icon-container::after {
+  content: "Saved!";
+  color: var(--color-tertiary-light);
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 2.5em;
+  animation: fade-in 2s forwards;
+}
+
+/* ############ 9. Footer ########### */
+.footer {
+  background-color: var(--color-primary);
+  padding: 1.6rem;
+}
+
+.footer__text {
+  color: var(--color-highlight-1);
+}
+
+/* ############ 10. Animations ########### */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0%) scale(0.5);
+  }
+  20%,
+  80% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-60%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+}
